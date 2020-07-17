@@ -26,16 +26,14 @@ def scrape_books(url):
     save_books(booklist)
 
 
-def save_books(all_books)
-
-
-connection = sqlite3.connect("library.db/;'")
-c = connection.cursor()
-c.execute('''CREATE TABLE books (title TEXT, price REAL, rating INTEGER)''')
-c.executemany(
-    "INSERT INTO books VALUES(?,?,?)", all_books)
-connection.commit()
-connection.close()
+def save_books(booklist):
+    connection = sqlite3.connect("library.db/;'")
+    c = connection.cursor()
+    c.execute('''CREATE TABLE books (title TEXT, price REAL, rating INTEGER)''')
+    c.executemany(
+        "INSERT INTO books VALUES(?,?,?)", booklist)
+    connection.commit()
+    connection.close()
 
 
 def get_title(book):
